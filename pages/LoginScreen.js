@@ -9,6 +9,8 @@ const buttonBorderWidth = 2;
 export function LoginScreen({ navigation }) {
     const [usernameBorderColor, setUsernameBorderColor] = useState('black');
     const [passwordBorderColor, setPasswordBorderColor] = useState('black');
+
+    const [usertext, setUsertext] = useState("");
     const onFocusUsername = () => {
       setUsernameBorderColor('#648FFF');
     }
@@ -29,6 +31,8 @@ export function LoginScreen({ navigation }) {
             style={inputStyle(usernameBorderColor, passwordBorderColor).usernameTextbox}
             autoCompleteType="username"
             onFocus={() => onFocusUsername()}
+            value={usertext}
+            onChangeText={setUsertext}
           />
           <PasswordIcon style={styles.passwordIcon}/>
           <TextInput
@@ -40,7 +44,11 @@ export function LoginScreen({ navigation }) {
           <Pressable style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
           </Pressable>
-          <Pressable onPress={() => navigation.navigate('Seamless')} style={styles.loginButton}>
+          <Pressable 
+            onPress={() => navigation.navigate('Seamless', {
+              username: usertext
+            })} 
+            style={styles.loginButton}>
             <Text style={styles.loginButtonText}>Login</Text>
           </Pressable>
           <Pressable

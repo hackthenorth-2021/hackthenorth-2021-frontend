@@ -3,12 +3,12 @@ import { View, ImageBackground, Text, StyleSheet, Pressable, Switch } from 'reac
 import CameraIcon from '../assets/camera-icon.svg';
 import HangerIcon from '../assets/hanger-icon.svg';
 import HelpIcon from '../assets/help-icon.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
-export function MainScreen({ navigation }) {
+export function MainScreen({ route, navigation }) {
     
-    const username = "Stephanie";
+    const username = route.params;
 
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => {
@@ -23,7 +23,7 @@ export function MainScreen({ navigation }) {
         <ImageBackground source={require('../assets/white-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
             <View style={styles.welcomeView}>
                 <Text style={styles.welcomeText}>Welcome, </Text> 
-                <Text style={styles.welcomeText}>{username}</Text> 
+                <Text style={styles.welcomeText}>{username.username}</Text> 
             </View>
             <Pressable style={styles.captureButton}>
                 <Text style={styles.captureButtonText}>Capture</Text>
