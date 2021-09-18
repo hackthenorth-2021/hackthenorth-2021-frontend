@@ -40,6 +40,9 @@ export function LoginScreen({ navigation }) {
           <Pressable style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
           </Pressable>
+          <Pressable onPress={() => navigation.navigate('Seamless')} style={styles.loginButton}>
+            <Text style={styles.loginButtonText}>Login</Text>
+          </Pressable>
           <Pressable
             onPress={() => navigation.navigate('Home')}
             style={styles.signupButton}
@@ -58,7 +61,7 @@ export function LoginScreen({ navigation }) {
         width: 404,
         height: 76,
         left: 58,
-        top: 160,
+        top: 98,
     
         fontFamily: 'Roboto-Medium',
         fontStyle: 'normal',
@@ -73,7 +76,7 @@ export function LoginScreen({ navigation }) {
       width: 228,
       height: 28,
       left: 58,
-      top: 208,
+      top: 146,
 
       fontFamily: 'Roboto',
       fontStyle: 'normal',
@@ -84,35 +87,12 @@ export function LoginScreen({ navigation }) {
     blurbColor: {
       color: '#858585'
     },
-    // usernameTextbox: {
-    //   position: 'absolute',
-    //   width: 259,
-    //   height: 51,
-    //   left: 57,
-    //   top: 266,
-    //   borderWidth: buttonBorderWidth,
-    //   borderRadius: 7,
-    //   top: 266,
-    //   paddingLeft: 40,
-    //   color: borderColor
-    // },
-    // passwordTextbox: {
-    //   borderWidth: buttonBorderWidth,
-    //   borderRadius: 7,
-    //   position: 'absolute',
-    //   width: 259,
-    //   height: 51,
-    //   left: 57,
-    //   top: 333,
-    //   paddingLeft: 40,
-    //   color: borderColor
-    // },
     forgotPasswordButton: {
       position: 'absolute',
       width: 148,
       height: 30,
       left: 108,
-      top: 393,
+      top: 335,
       display: 'flex',
       alignItems: 'center',
       
@@ -151,19 +131,44 @@ export function LoginScreen({ navigation }) {
 
       color: '#FFFFFF',
     },
+    loginButton: {
+      position: 'absolute',
+      width: 254,
+      height: 32,
+      left: 61,
+      top: 390,
+      backgroundColor: '#648FFF',
+      borderRadius: 4
+    },
+    loginButtonText: {
+      position: 'absolute',
+      width: 148,
+      height: 30,
+      left: 50,
+      top: 5, 
+
+      fontFamily: 'Roboto-Medium',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: 18,
+      lineHeight: 21,
+      display: 'flex',
+      textAlign: 'center',
+      color: '#FFFFFF'
+    },
     userIcon: {
       position: 'absolute',
       width: 16,
       height: 24,
       left: 72,
-      top: 278
+      top: 216
     },
     passwordIcon: {
       position: 'absolute',
       width: 20,
       height: 24,
       left: 72,
-      top: 346
+      top: 284
     }
   });
 
@@ -176,7 +181,7 @@ export function LoginScreen({ navigation }) {
       top: 266,
       borderWidth: buttonBorderWidth,
       borderRadius: 7,
-      top: 266,
+      top: 204,
       paddingLeft: 40,
       borderColor: usernameBorderColor
     },
@@ -187,7 +192,7 @@ export function LoginScreen({ navigation }) {
       width: 259,
       height: 51,
       left: 57,
-      top: 333,
+      top: 271,
       paddingLeft: 40,
       borderColor: passwordBorderColor
     },
