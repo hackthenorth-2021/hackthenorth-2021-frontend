@@ -1,11 +1,20 @@
 import * as React from 'react';
-import { View, ImageBackground, Button, Text, TextInput, StyleSheet, ViewBase, Pressable } from 'react-native';
+import { View, ImageBackground, Text, TextInput, StyleSheet, ViewBase, Pressable } from 'react-native';
 import UserIcon from '../assets/user-icon.svg';
 import PasswordIcon from '../assets/password-icon.svg';
+import { useState } from 'react';
 
 const buttonBorderWidth = 2;
 
 export function LoginScreen({ navigation }) {
+    const [usernameBorderColor, setUsernameBorderColor] = useState('black');
+    const [passwordBorderColor, setPasswordBorderColor] = useState('black');
+    const onFocusUsername = () => {
+      setUsernameBorderColor('#648FFF');
+    }
+    const onFocusPassword = () => {
+      setPasswordBorderColor('#648FFF');
+    }
     return (
       <View>
         <ImageBackground source={require('../assets/login-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
@@ -17,15 +26,16 @@ export function LoginScreen({ navigation }) {
           <UserIcon style={styles.userIcon}/>
           <TextInput
             placeholder="Username"
-            style={styles.usernameTextbox}
+            style={inputStyle(usernameBorderColor, passwordBorderColor).usernameTextbox}
             autoCompleteType="username"
-            inlineImageLeft={UserIcon}
+            onFocus={() => onFocusUsername()}
           />
           <PasswordIcon style={styles.passwordIcon}/>
           <TextInput
             placeholder="Password"
-            style={styles.passwordTextbox}
+            style={inputStyle(usernameBorderColor, passwordBorderColor).passwordTextbox}
             autoCompleteType="password"
+            onFocus={() => onFocusPassword()}
           />
           <Pressable style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
@@ -74,27 +84,29 @@ export function LoginScreen({ navigation }) {
     blurbColor: {
       color: '#858585'
     },
-    usernameTextbox: {
-      position: 'absolute',
-      width: 259,
-      height: 51,
-      left: 57,
-      top: 266,
-      borderWidth: buttonBorderWidth,
-      borderRadius: 7,
-      top: 266,
-      paddingLeft: 40,
-    },
-    passwordTextbox: {
-      borderWidth: buttonBorderWidth,
-      borderRadius: 7,
-      position: 'absolute',
-      width: 259,
-      height: 51,
-      left: 57,
-      top: 333,
-      paddingLeft: 40,
-    },
+    // usernameTextbox: {
+    //   position: 'absolute',
+    //   width: 259,
+    //   height: 51,
+    //   left: 57,
+    //   top: 266,
+    //   borderWidth: buttonBorderWidth,
+    //   borderRadius: 7,
+    //   top: 266,
+    //   paddingLeft: 40,
+    //   color: borderColor
+    // },
+    // passwordTextbox: {
+    //   borderWidth: buttonBorderWidth,
+    //   borderRadius: 7,
+    //   position: 'absolute',
+    //   width: 259,
+    //   height: 51,
+    //   left: 57,
+    //   top: 333,
+    //   paddingLeft: 40,
+    //   color: borderColor
+    // },
     forgotPasswordButton: {
       position: 'absolute',
       width: 148,
@@ -153,4 +165,30 @@ export function LoginScreen({ navigation }) {
       left: 72,
       top: 346
     }
+  });
+
+  const inputStyle = (usernameBorderColor, passwordBorderColor) => StyleSheet.create({
+    usernameTextbox: {
+      position: 'absolute',
+      width: 259,
+      height: 51,
+      left: 57,
+      top: 266,
+      borderWidth: buttonBorderWidth,
+      borderRadius: 7,
+      top: 266,
+      paddingLeft: 40,
+      borderColor: usernameBorderColor
+    },
+    passwordTextbox: {
+      borderWidth: buttonBorderWidth,
+      borderRadius: 7,
+      position: 'absolute',
+      width: 259,
+      height: 51,
+      left: 57,
+      top: 333,
+      paddingLeft: 40,
+      borderColor: passwordBorderColor
+    },
   });
