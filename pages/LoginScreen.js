@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, ImageBackground, Button, Text, TextInput, StyleSheet, ViewBase, Pressable } from 'react-native';
-// import styles from '../styles/login.js';
+import UserIcon from '../assets/user-icon.svg';
+import PasswordIcon from '../assets/password-icon.svg';
 
 const buttonBorderWidth = 2;
 
@@ -13,11 +14,14 @@ export function LoginScreen({ navigation }) {
             <Text style={styles.blurbColor}>Please sign in with your username </Text>
             <Text style={styles.blurbColor}>and password</Text>
           </View>
+          <UserIcon style={styles.userIcon}/>
           <TextInput
             placeholder="Username"
             style={styles.usernameTextbox}
             autoCompleteType="username"
+            inlineImageLeft={UserIcon}
           />
+          <PasswordIcon style={styles.passwordIcon}/>
           <TextInput
             placeholder="Password"
             style={styles.passwordTextbox}
@@ -79,7 +83,7 @@ export function LoginScreen({ navigation }) {
       borderWidth: buttonBorderWidth,
       borderRadius: 7,
       top: 266,
-      padding: 10,
+      paddingLeft: 40,
     },
     passwordTextbox: {
       borderWidth: buttonBorderWidth,
@@ -89,7 +93,7 @@ export function LoginScreen({ navigation }) {
       height: 51,
       left: 57,
       top: 333,
-      padding: 10,
+      paddingLeft: 40,
     },
     forgotPasswordButton: {
       position: 'absolute',
@@ -134,5 +138,19 @@ export function LoginScreen({ navigation }) {
       alignItems: 'center',
 
       color: '#FFFFFF',
+    },
+    userIcon: {
+      position: 'absolute',
+      width: 16,
+      height: 24,
+      left: 72,
+      top: 278
+    },
+    passwordIcon: {
+      position: 'absolute',
+      width: 20,
+      height: 24,
+      left: 72,
+      top: 346
     }
   });
