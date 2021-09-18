@@ -1,15 +1,22 @@
 import * as React from 'react';
-import { View, ImageBackground, Text, TextInput, StyleSheet, ViewBase, Pressable } from 'react-native';
+import { View, ImageBackground, Text, StyleSheet, Pressable, Switch } from 'react-native';
 import CameraIcon from '../assets/camera-icon.svg';
 import HangerIcon from '../assets/hanger-icon.svg';
 import HelpIcon from '../assets/help-icon.svg';
 import { useState } from 'react';
 
-const buttonBorderWidth = 2;
 
 export function MainScreen({ navigation }) {
     
     const username = "Stephanie";
+
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => {
+        setIsEnabled(previousState => !previousState);
+        value == "On" ? setValue("Off") : setValue("On");
+    };
+
+    const [value, setValue] = React.useState("On");
 
     return (
       <View style={styles.container}>
@@ -33,6 +40,14 @@ export function MainScreen({ navigation }) {
                     <Text style={styles.recommendButtonText}>Recommend</Text>
                     <Text style={styles.recommendButtonText}>styles</Text>
                 </View>
+                <Text style={styles.toggleText}>{value}</Text>
+                <Switch
+                    trackColor={{ false: '#767577', true: '#FFFFFF' }}
+                    thumbColor={isEnabled ? '#FFB000' : '#f4f3f4'}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                    style={styles.reccSwitch}
+                />
             </Pressable>
             
             <Pressable style={[styles.helpButton, styles.shadowProp]}>
@@ -194,5 +209,27 @@ export function MainScreen({ navigation }) {
         height: 30,
         left: 15,
         top: 8,
+    },
+    reccSwitch: {
+        top: 70,
+        left: 60,
+        position: 'absolute',
+        height: 35,
+    },
+    toggleText: {
+        top: 75,
+        left: 20,
+        position: 'absolute',
+        height: 35,
+
+        fontFamily: 'Roboto-Medium',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 18,
+        lineHeight: 21,
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        color: '#FFFFFF',
     }
   });
