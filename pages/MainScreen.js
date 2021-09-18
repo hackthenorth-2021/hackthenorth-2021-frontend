@@ -3,7 +3,7 @@ import { View, ImageBackground, Text, StyleSheet, Pressable, Switch } from 'reac
 import CameraIcon from '../assets/camera-icon.svg';
 import HangerIcon from '../assets/hanger-icon.svg';
 import HelpIcon from '../assets/help-icon.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 export function MainScreen({ route, navigation }) {
@@ -16,7 +16,7 @@ export function MainScreen({ route, navigation }) {
         value == "On" ? setValue("Off") : setValue("On");
     };
 
-    const [value, setValue] = React.useState("On");
+    const [value, setValue] = React.useState(isEnabled == false ? "Off" : "On");
 
     return (
       <View style={styles.container}>

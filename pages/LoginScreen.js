@@ -40,6 +40,7 @@ export function LoginScreen({ navigation }) {
             style={inputStyle(usernameBorderColor, passwordBorderColor).passwordTextbox}
             autoCompleteType="password"
             onFocus={() => onFocusPassword()}
+            secureTextEntry={true}
           />
           <Pressable style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
