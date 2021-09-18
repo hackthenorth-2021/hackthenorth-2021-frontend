@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { View, ImageBackground, Text, TextInput, StyleSheet, ViewBase, Pressable } from 'react-native';
-import UserIcon from '../assets/user-icon.svg';
-import PasswordIcon from '../assets/password-icon.svg';
+import CameraIcon from '../assets/camera-icon.svg';
+import HangerIcon from '../assets/hanger-icon.svg';
+import HelpIcon from '../assets/help-icon.svg';
 import { useState } from 'react';
 
 const buttonBorderWidth = 2;
@@ -12,25 +13,33 @@ export function MainScreen({ navigation }) {
 
     return (
       <View style={styles.container}>
-        <View style={styles.welcomeView}>
-            <Text style={styles.welcomeText}>Welcome, </Text> 
-            <Text style={styles.welcomeText}>{username}</Text> 
-        </View>
-        <Pressable style={styles.captureButton}>
-            <Text style={styles.captureButtonText}>Capture</Text>
-        </Pressable>
-        <Pressable style={styles.closetButton}>
-            <Text style={styles.closetButtonText}>Closet</Text>
-        </Pressable>
-        <Pressable style={styles.recommendButton}>
-            <View style={styles.recommendView}>
-                <Text style={styles.recommendButtonText}>Recommend</Text>
-                <Text style={styles.recommendButtonText}>styles</Text>
+        <ImageBackground source={require('../assets/white-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
+            <View style={styles.welcomeView}>
+                <Text style={styles.welcomeText}>Welcome, </Text> 
+                <Text style={styles.welcomeText}>{username}</Text> 
             </View>
-        </Pressable>
-        <Pressable style={styles.helpButton}>
-            <Text style={styles.helpButtonText}>Help</Text>
-        </Pressable>
+            <Pressable style={styles.captureButton}>
+                <Text style={styles.captureButtonText}>Capture</Text>
+                <CameraIcon style={styles.cameraIcon}/>
+            </Pressable>
+            
+            <Pressable style={styles.closetButton}>
+                <Text style={styles.closetButtonText}>Closet</Text>
+                <HangerIcon style={styles.hangerIcon}/>
+            </Pressable>
+
+            <Pressable style={styles.recommendButton}>
+                <View style={styles.recommendView}>
+                    <Text style={styles.recommendButtonText}>Recommend</Text>
+                    <Text style={styles.recommendButtonText}>styles</Text>
+                </View>
+            </Pressable>
+            
+            <Pressable style={[styles.helpButton, styles.shadowProp]}>
+                <Text style={styles.helpButtonText}>Help</Text>
+                <HelpIcon style={styles.helpIcon}/>
+            </Pressable>
+        </ImageBackground>
       </View>
     );
   }
@@ -44,7 +53,7 @@ export function MainScreen({ navigation }) {
         width: 404,
         height: 76,
         left: 39,
-        top: 10,
+        top: 15,
     },
     welcomeText: {
         fontFamily: 'Roboto-Medium',
@@ -157,5 +166,33 @@ export function MainScreen({ navigation }) {
         height: 20,
         left: 39,
         top: 12
+    },
+    shadowProp: {
+        shadowColor: '#171717',
+        shadowOffset: {width: -3, height: 6},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+    },
+    cameraIcon: {
+        position: 'absolute',
+        width: 108,
+        height: 76,
+        left: 98,
+        top: 104,
+        opacity: 0.98
+    },
+    hangerIcon: {
+        position: 'absolute',
+        width: 129,
+        height: 86,
+        left: 7,
+        top: 92,
+    },
+    helpIcon: {
+        position: 'absolute',
+        width: 30,
+        height: 30,
+        left: 15,
+        top: 8,
     }
   });

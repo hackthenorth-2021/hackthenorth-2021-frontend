@@ -47,7 +47,13 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Getting Started">
+      <Stack.Navigator 
+        initialRouteName="Getting Started"
+        screenOptions={{
+          headerStyle: { elevation: 0 },
+          cardStyle: { backgroundColor: '#fff'}
+        }}
+      >
         <Stack.Screen name="Getting Started" component={TitleScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Seamless" component={MainScreen} />
