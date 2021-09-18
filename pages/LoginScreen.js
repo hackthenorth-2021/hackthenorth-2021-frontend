@@ -13,16 +13,16 @@ export function LoginScreen({ navigation }) {
             <Text style={styles.blurbColor}>Please sign in with your username </Text>
             <Text style={styles.blurbColor}>and password</Text>
           </View>
-          <View style={styles.usernameBox}>
-            <TextInput
-                placeholder="Username"
-            />
-          </View>
-          <View style={styles.passwordBox}>
-            <TextInput
-                placeholder="Password"
-            />
-          </View>
+          <TextInput
+            placeholder="Username"
+            style={styles.usernameTextbox}
+            autoCompleteType="username"
+          />
+          <TextInput
+            placeholder="Password"
+            style={styles.passwordTextbox}
+            autoCompleteType="password"
+          />
           <Pressable style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
           </Pressable>
@@ -70,30 +70,26 @@ export function LoginScreen({ navigation }) {
     blurbColor: {
       color: '#858585'
     },
-    usernameBox: {
+    usernameTextbox: {
       position: 'absolute',
       width: 259,
       height: 51,
       left: 57,
       top: 266,
-      borderLeftWidth: buttonBorderWidth,
-      borderRightWidth: buttonBorderWidth,
-      borderBottomWidth: buttonBorderWidth,
-      borderTopWidth: buttonBorderWidth,
+      borderWidth: buttonBorderWidth,
       borderRadius: 7,
-      top: 266
+      top: 266,
+      padding: 10,
     },
-    passwordBox: {
-      borderLeftWidth: buttonBorderWidth,
-      borderRightWidth: buttonBorderWidth,
-      borderBottomWidth: buttonBorderWidth,
-      borderTopWidth: buttonBorderWidth,
+    passwordTextbox: {
+      borderWidth: buttonBorderWidth,
       borderRadius: 7,
       position: 'absolute',
       width: 259,
       height: 51,
       left: 57,
       top: 333,
+      padding: 10,
     },
     forgotPasswordButton: {
       position: 'absolute',
