@@ -1,4 +1,4 @@
-# hackthenorth-2021-frontend
+# seamless
 
 To run use: 
 
