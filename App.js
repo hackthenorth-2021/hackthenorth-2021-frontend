@@ -28,14 +28,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './pages/HomeScreen';
 import { DetailsScreen } from './pages/DetailsScreen';
 import { TitleScreen } from './pages/TitleScreen';
+import { LoginScreen } from './pages/LoginScreen';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
+import { useEffect } from 'react';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  useEffect(() => {
+    (async () => await Font.loadAsync({
+      Roboto: require('./native-base/Fonts/Roboto/Roboto-Regular.ttf'),
+      Roboto_medium: require('./native-base/Fonts/Roboto/Roboto-Medium.ttf'),
+      ...Ionicons.font,
+    }))();
+     }, [])
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Getting Started">
         <Stack.Screen name="Getting Started" component={TitleScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="Details"
