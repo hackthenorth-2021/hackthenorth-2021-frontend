@@ -11,7 +11,9 @@
     "@expo/next-adapter": "^3.0.6",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
+    "axios": "^0.21.4",
     "expo": "~42.0.1",
+    "expo-camera": "~11.2.2",
     "expo-custom-switch": "^1.0.2",
     "expo-font": "~9.2.1",
     "expo-status-bar": "~1.0.4",
@@ -19,13 +21,15 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-camera": "^4.2.0",
+    "react-native-image-base64": "^0.1.4",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
-    "expo-camera": "~11.2.2"
+    "expo-image-manipulator": "~9.2.2",
+    "expo-speech": "~9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
