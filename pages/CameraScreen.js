@@ -1,5 +1,5 @@
 import {StatusBar} from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert, ImageBackground, Image, Pressable} from 'react-native';
 import { Camera } from 'expo-camera';
 import CameraIcon from '../assets/camera-icon.svg';
@@ -19,6 +19,12 @@ export default function CameraScreen({ setHideComponents, navigation }) {
   const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back)
   const [flashMode, setFlashMode] = React.useState('off')
   const [textDataFromPromise, setTextDataFromPromise] = React.useState("");
+  const [textDataAvailable, setTextDataAvailable] = React.useState(false);
+
+  React.useEffect(() => {
+    sendPhotoAll(capturedImage, setTextDataFromPromise);
+    setTextDataAvailable(true);
+  }, [previewVisible, capturedImage]);
 
   const __startCamera = async () => {
     setHideComponents(true)
@@ -68,8 +74,13 @@ export default function CameraScreen({ setHideComponents, navigation }) {
             width: '100%'
           }}
         >
-          {previewVisible && capturedImage ? (
-            <CameraPreview textDataFromPromise={textDataFromPromise} photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} navigation={navigation}/>
+          {textDataAvailable && previewVisible && capturedImage ? (
+            <CameraPreview 
+              textDataFromPromise={textDataFromPromise}
+              photo={capturedImage} 
+              savePhoto={__savePhoto} 
+              retakePicture={__retakePicture} 
+              navigation={navigation}/>
           ) : (
             <Camera
               type={cameraType}
@@ -244,7 +255,7 @@ async function resizePhoto(photo) {
     return resizedPhoto.base64
 }
 
-async function sendPhotoAgain(base64) {
+async function sendPhotoAgain(base64, setTextDataFromPromise) {
 
     await axios.post(
         "https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api", { "image" : base64})
@@ -271,18 +282,15 @@ async function sendPhotoAgain(base64) {
     })
 }
 
-const sendPhotoAll = async (photo) => {
+const sendPhotoAll = async (photo, setTextDataFromPromise) => {
   const base64Data = await resizePhoto(photo);
-  const textData = await sendPhotoAgain(base64Data);
+  const textData = await sendPhotoAgain(base64Data, setTextDataFromPromise);
 
   return textData
 }
 
 
 const CameraPreview = ({textDataFromPromise, photo, retakePicture, savePhoto, navigation}) => {
-
-    const textData = sendPhotoAll(photo);
-    console.log(textData, "camera screen textdata")
 
   return (
     <View
