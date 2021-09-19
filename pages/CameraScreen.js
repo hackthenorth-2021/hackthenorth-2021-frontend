@@ -18,6 +18,7 @@ export default function CameraScreen({ setHideComponents, navigation }) {
   const [capturedImage, setCapturedImage] = React.useState(null)
   const [cameraType, setCameraType] = React.useState(Camera.Constants.Type.back)
   const [flashMode, setFlashMode] = React.useState('off')
+  const [textDataFromPromise, setTextDataFromPromise] = React.useState("");
 
   const __startCamera = async () => {
     setHideComponents(true)
@@ -68,7 +69,7 @@ export default function CameraScreen({ setHideComponents, navigation }) {
           }}
         >
           {previewVisible && capturedImage ? (
-            <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} navigation={navigation}/>
+            <CameraPreview textDataFromPromise={textDataFromPromise} photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} navigation={navigation}/>
           ) : (
             <Camera
               type={cameraType}
@@ -259,6 +260,7 @@ async function sendPhotoAgain(base64) {
                 console.log(response.data);
             }
 
+            setTextDataFromPromise(response.data.data)
             return response.data.data
 
         }).catch(error => {
@@ -277,7 +279,7 @@ const sendPhotoAll = async (photo) => {
 }
 
 
-const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
+const CameraPreview = ({textDataFromPromise, photo, retakePicture, savePhoto, navigation}) => {
 
     const textData = sendPhotoAll(photo);
     console.log(textData, "camera screen textdata")
@@ -334,7 +336,7 @@ const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
                 onPress={() => navigation.navigate('Preview',
                     {
                     image: photo.uri,
-                    text: textData
+                    text: textDataFromPromise
                     }
                 )}
               style={{
