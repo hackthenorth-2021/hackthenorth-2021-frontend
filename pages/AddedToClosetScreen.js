@@ -1,16 +1,11 @@
 import * as React from 'react';
 import { View, ImageBackground, Text, TextInput, StyleSheet, ViewBase, Pressable, TouchableOpacity } from 'react-native';
-import UserIcon from '../assets/user-icon.svg';
-import PasswordIcon from '../assets/password-icon.svg';
-import { useState } from 'react';
 
 export function AddedToClosetScreen({ navigation }) {
 
     const longDescription = "Insert generated description ababaababababbabababababababbabab";
     const clothingName = "Pants";
     const clothingDescription = "Blue jeans, high waisted, cuffed, denim-washed"
-
-    const [isAddedToCloset, setIsAddedToCloset] = useState(false);
     
     return (
       <View>
