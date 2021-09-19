@@ -10,18 +10,26 @@ export function ClothingScreen({ navigation }) {
     return (
       <View>
         <ImageBackground source={require('../assets/clothing-item-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
-          <Text style={styles.title}>Clothing Item</Text>
-          <View style={{textAlign: 'left'}}>
-            <Text style={styles.description}>{longDescription}</Text>
-          </View>
-          <View style={styles.pictureContainer}>
+            <Text style={styles.title}>Clothing Item</Text>
+            <View style={{textAlign: 'left'}}>
+                <Text style={styles.description}>{longDescription}</Text>
+            </View>
+          <View 
+            accessible={true}
+            accessibilityLabel={clothingName + "." + clothingDescription}
+            style={styles.pictureContainer}>
             <View style={styles.descriptionContainer}>
                 <Text style={styles.descriptionTitle}>{clothingName}</Text>
                 <Text style={styles.descriptionAdjectives}>{clothingDescription}</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.addToClosetButton} onPress={() => navigation.navigate('Closet')}>
-            <Text style={styles.addToClosetButtonText}>+ add to closet</Text>
+          <TouchableOpacity 
+            accessible={true}
+            accessibilityHint="Click button to save clothing in virtual closet"
+            style={styles.addToClosetButton} 
+            onPress={() => navigation.navigate('Closet')}
+          >
+            <Text style={styles.addToClosetButtonText}>Add to closet</Text>
           </TouchableOpacity>
           
         </ImageBackground>
@@ -34,8 +42,8 @@ export function ClothingScreen({ navigation }) {
         position: 'absolute',
         width: 230,
         height: 42,
-        left: 76,
-        top: 33,
+        left: 80,
+        top: 30,
 
         fontFamily: "Roboto-Medium",
         fontStyle: 'normal',

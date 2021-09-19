@@ -21,12 +21,15 @@ export function LoginScreen({ navigation }) {
       <View>
         <ImageBackground source={require('../assets/login-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
           <Text style={styles.login}>Login</Text>
-          <View style={styles.blurb}>
+          <View 
+            accessible={true} 
+            style={styles.blurb}>
             <Text style={styles.blurbColor}>Please sign in with your username </Text>
             <Text style={styles.blurbColor}>and password</Text>
           </View>
           <UserIcon style={styles.userIcon}/>
           <TextInput
+            accessibilityLabel="Type username"
             placeholder="Username"
             style={inputStyle(usernameBorderColor, passwordBorderColor).usernameTextbox}
             autoCompleteType="username"
@@ -36,16 +39,22 @@ export function LoginScreen({ navigation }) {
           />
           <PasswordIcon style={styles.passwordIcon}/>
           <TextInput
+            accessibilityLabel="Type password"
             placeholder="Password"
             style={inputStyle(usernameBorderColor, passwordBorderColor).passwordTextbox}
             autoCompleteType="password"
             onFocus={() => onFocusPassword()}
             secureTextEntry={true}
           />
-          <Pressable style={styles.forgotPasswordButton}>
+          <Pressable 
+            accessible={true} 
+            accessibilityHint="Click if forgotten password"
+            style={styles.forgotPasswordButton}>
             <Text style={styles.forgotPasswordText}>Forgot Password</Text>
           </Pressable>
           <Pressable 
+            accessible={true} 
+            accessibilityHint="Login to continue using Seamless"
             onPress={() => navigation.navigate('Seamless', {
               username: usertext
             })} 
@@ -53,6 +62,8 @@ export function LoginScreen({ navigation }) {
             <Text style={styles.loginButtonText}>Login</Text>
           </Pressable>
           <Pressable
+            accessible={true} 
+            accessibilityHint="Sign up as a new user"
             onPress={() => navigation.navigate('Home')}
             style={styles.signupButton}
           >
@@ -67,8 +78,8 @@ export function LoginScreen({ navigation }) {
 
     login: {
         position: 'absolute',
-        width: 404,
-        height: 76,
+        width: 258,
+        height: 48,
         left: 58,
         top: 98,
     
@@ -83,7 +94,7 @@ export function LoginScreen({ navigation }) {
     blurb: {
       position: 'absolute',
       width: 228,
-      height: 28,
+      height: 34,
       left: 58,
       top: 146,
 

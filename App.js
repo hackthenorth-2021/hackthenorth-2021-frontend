@@ -43,7 +43,7 @@ function App() {
   useEffect(() => {
     (async () => await Font.loadAsync({
       Roboto: require('./native-base/Fonts/Roboto/Roboto-Regular.ttf'),
-      Roboto_medium: require('./native-base/Fonts/Roboto/Roboto-Medium.ttf'),
+      "Roboto-Medium": require('./native-base/Fonts/Roboto/Roboto-Medium.ttf'),
       ...Ionicons.font,
     }))();
      }, [])

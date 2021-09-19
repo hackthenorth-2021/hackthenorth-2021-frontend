@@ -145,7 +145,11 @@ export default function CameraScreen({ setHideComponents }) {
                     }}
                   >
                     <CameraDesign style={styles.cameraDesign}/>
-                    <TouchableOpacity onPress={__takePicture}>
+                    <TouchableOpacity 
+                      accessible={true}
+                      accessibilityLabel="Take picture button"
+                      accessibilityHint="Position clothing 1 meter in front of you and click button to take picture" 
+                      onPress={__takePicture}>
                         <CameraButton style={styles.cameraButton}/>
                     </TouchableOpacity>
                   </View>
@@ -156,7 +160,8 @@ export default function CameraScreen({ setHideComponents }) {
         </View>
       ) : (
         <View>
-          <Pressable style={styles.captureButton} onPress={__startCamera}>
+          <Pressable 
+            style={styles.captureButton} onPress={__startCamera}>
                 <Text style={styles.captureButtonText}>Capture</Text>
                 <CameraIcon style={styles.cameraIcon}/>
           </Pressable>
@@ -176,7 +181,7 @@ const styles = StyleSheet.create({
     },
     captureButton: {
         position: 'absolute',
-        width: 303,
+        width: 302,
         height: 239,
         left: -154,
         top: -190,
@@ -195,9 +200,8 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
 
         position: 'absolute',
-        width: 404,
+        width: 302,
         height: 76,
-        left: -50,
         top: 28
     },
     cameraIcon: {
