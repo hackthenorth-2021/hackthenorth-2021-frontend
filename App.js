@@ -33,6 +33,7 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect } from 'react';
 import { MainScreen } from './pages/MainScreen';
+import CameraScreen from './pages/CameraScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -57,6 +58,7 @@ function App() {
         <Stack.Screen name="Getting Started" component={TitleScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Seamless" component={MainScreen} />
+        <Stack.Screen name="Camera" component={CameraScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="Details"

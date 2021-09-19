@@ -4,6 +4,7 @@ import CameraIcon from '../assets/camera-icon.svg';
 import HangerIcon from '../assets/hanger-icon.svg';
 import HelpIcon from '../assets/help-icon.svg';
 import { useState } from 'react';
+import CameraScreen from './CameraScreen';
 
 
 export function MainScreen({ route, navigation }) {
@@ -19,16 +20,17 @@ export function MainScreen({ route, navigation }) {
     const [value, setValue] = React.useState(isEnabled == false ? "Off" : "On");
 
     return (
-      <View style={styles.container}>
+      <View>
         <ImageBackground source={require('../assets/white-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
             <View style={styles.welcomeView}>
                 <Text style={styles.welcomeText}>Welcome, </Text> 
                 <Text style={styles.welcomeText}>{username.username}</Text> 
             </View>
-            <Pressable style={styles.captureButton}>
+            {/* <Pressable style={styles.captureButton} onPress={() => navigation.navigate('Camera')}>
                 <Text style={styles.captureButtonText}>Capture</Text>
                 <CameraIcon style={styles.cameraIcon}/>
-            </Pressable>
+            </Pressable> */}
+            <CameraScreen></CameraScreen>
             
             <Pressable style={styles.closetButton}>
                 <Text style={styles.closetButtonText}>Closet</Text>
@@ -60,9 +62,6 @@ export function MainScreen({ route, navigation }) {
   }
 
   const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#FFFFFF'
-    },
     welcomeView: {
         position: 'absolute',
         width: 404,
