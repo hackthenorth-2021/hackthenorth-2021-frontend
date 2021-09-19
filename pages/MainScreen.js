@@ -23,37 +23,53 @@ export function MainScreen({ route, navigation }) {
     return (
       <View>
         <ImageBackground source={require('../assets/white-background.png')} resizeMode="cover" style={{width: '100%', height: '100%', justifyContent: 'center', blend: 'pass through'}}>
-            <View style={styles.welcomeView}>
-                <Text style={styles.welcomeText}>Welcome, </Text> 
-                <Text style={styles.welcomeText}>{username.username}</Text> 
-            </View>
+            {!hideComponents && 
+                <View accessible={true} style={styles.welcomeView}>
+                    <Text style={styles.welcomeText}>Welcome, </Text> 
+                    <Text style={styles.welcomeText}>{username.username}</Text> 
+                </View>
+            }
             <CameraScreen setHideComponents={setHideComponents}/>
             {!hideComponents && 
-                <Pressable style={styles.closetButton}>
+                <Pressable 
+                    style={styles.closetButton}
+                    accessible={true}
+                    accessibilityHint="Click button to browse your closet" 
+                >
                     <Text style={styles.closetButtonText}>Closet</Text>
                     <HangerIcon style={styles.hangerIcon}/>
                 </Pressable>
             }
 
             {!hideComponents && 
-                <Pressable style={styles.recommendButton}>
-                    <View style={styles.recommendView}>
+                <View style={styles.recommendButton}>
+                    <View 
+                        accessible={true}
+                        accessibilityLabel={"Recommend styles feature currently" + value}
+                        style={styles.recommendView}
+                    >
                         <Text style={styles.recommendButtonText}>Recommend</Text>
                         <Text style={styles.recommendButtonText}>styles</Text>
                     </View>
                     <Text style={styles.toggleText}>{value}</Text>
                     <Switch
+                        accessibilityHint="Toggle recommendations on and off"
                         trackColor={{ false: '#767577', true: '#FFFFFF' }}
                         thumbColor={isEnabled ? '#FFB000' : '#f4f3f4'}
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                         style={styles.reccSwitch}
                     />
-                </Pressable>
+                </View>
             }
 
             {!hideComponents && 
-                <Pressable onPress={() => navigation.navigate('Clothing Analysis')} style={[styles.helpButton, styles.shadowProp]}>
+                <Pressable 
+                    accessible={true}
+                    accessibilityHint="Click button for guide on how to use app"
+                    onPress={() => navigation.navigate('Clothing Analysis')} 
+                    style={[styles.helpButton, styles.shadowProp]}
+                >
                     <Text style={styles.helpButtonText}>Help</Text>
                     <HelpIcon style={styles.helpIcon}/>
                 </Pressable>
@@ -66,7 +82,7 @@ export function MainScreen({ route, navigation }) {
   const styles = StyleSheet.create({
     welcomeView: {
         position: 'absolute',
-        width: 404,
+        width: 298,
         height: 76,
         left: 39,
         top: 15,
@@ -126,8 +142,8 @@ export function MainScreen({ route, navigation }) {
     },
     recommendView: {
         position: 'absolute',
-        width: 149,
-        height: 20,
+        width: 107,
+        height: 45,
         left: 12,
         top: 14
     },
@@ -187,7 +203,7 @@ export function MainScreen({ route, navigation }) {
         top: 75,
         left: 20,
         position: 'absolute',
-        height: 35,
+        height: 23,
 
         fontFamily: 'Roboto-Medium',
         fontStyle: 'normal',
