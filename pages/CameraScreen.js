@@ -292,6 +292,14 @@ const sendPhotoAll = async (photo, setTextDataFromPromise) => {
 
 const CameraPreview = ({textDataFromPromise, photo, retakePicture, savePhoto, navigation}) => {
 
+    navigation.navigate('Preview',
+        {
+            image: photo.uri,
+            text: textDataFromPromise
+        }
+    )
+
+
   return (
     <View
       style={{
@@ -350,7 +358,6 @@ const CameraPreview = ({textDataFromPromise, photo, retakePicture, savePhoto, na
               style={{
                 width: 130,
                 height: 40,
-
                 alignItems: 'center',
                 borderRadius: 4
               }}

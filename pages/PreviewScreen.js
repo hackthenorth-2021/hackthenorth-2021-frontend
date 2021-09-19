@@ -52,6 +52,8 @@ export function PreviewScreen({ route, navigation }) {
             fontSize: 36,
             lineHeight: 42,
 
+
+
             color: '#000000',
         }}>Clothing Item</Text>
 
@@ -78,7 +80,7 @@ export function PreviewScreen({ route, navigation }) {
         }}
         >
             <Text style={{
-                top: 10,
+                height: Dimensions.get('window').height / 6,
                 fontFamily: 'Roboto-Medium',
                 fontStyle: 'normal',
                 fontWeight: 'bold',
@@ -86,6 +88,10 @@ export function PreviewScreen({ route, navigation }) {
                 lineHeight: 21,
                 display: 'flex',
                 textAlign: 'center',
+                justifyContent: "center",
+                paddingTop: 30,
+                margin: 5,
+                alignItems: "center",
                 color: '#000000'
             }}>{text}</Text>
         </View>
