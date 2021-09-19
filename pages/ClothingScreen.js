@@ -43,7 +43,7 @@ export function ClothingScreen({ navigation }) {
         width: 230,
         height: 42,
         left: 80,
-        top: 30,
+        top: 63,
 
         fontFamily: "Roboto-Medium",
         fontStyle: 'normal',
@@ -73,7 +73,7 @@ export function ClothingScreen({ navigation }) {
         width: 233,
         height: 356,
         left: 71,
-        top: 120,
+        top: 146,
         backgroundColor: '#C4C4C4',
         borderRadius: 10
     },
@@ -121,7 +121,7 @@ export function ClothingScreen({ navigation }) {
         width: 233,
         height: 46,
         left: 71,
-        top: 490,
+        top: 522,
         backgroundColor: '#FE6100',
         borderRadius: 10
     },

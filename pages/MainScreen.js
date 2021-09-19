@@ -85,7 +85,7 @@ export function MainScreen({ route, navigation }) {
         width: 298,
         height: 76,
         left: 39,
-        top: 15,
+        top: 55,
     },
     welcomeText: {
         fontFamily: 'Roboto-Medium',
@@ -99,7 +99,7 @@ export function MainScreen({ route, navigation }) {
         width: 143,
         height: 208,
         left: 35,
-        top: 371,
+        top: 411,
         backgroundColor: '#FE6100',
         borderRadius: 12
     },
@@ -125,7 +125,7 @@ export function MainScreen({ route, navigation }) {
         width: 133,
         height: 121,
         left: 204,
-        top: 371,
+        top: 411,
         backgroundColor: '#FFB000',
         borderRadius: 12
     },
@@ -152,7 +152,7 @@ export function MainScreen({ route, navigation }) {
         width: 133,
         height: 47,
         left: 204,
-        top: 525,
+        top: 570,
         backgroundColor: '#FFFFFF',
         borderRadius: 12
     },

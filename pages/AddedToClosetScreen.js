@@ -35,7 +35,7 @@ export function AddedToClosetScreen({ navigation }) {
         width: 230,
         height: 42,
         left: 76,
-        top: 33,
+        top: 63,
 
         fontFamily: "Roboto-Medium",
         fontStyle: 'normal',
@@ -65,7 +65,7 @@ export function AddedToClosetScreen({ navigation }) {
         width: 233,
         height: 356,
         left: 71,
-        top: 120,
+        top: 146,
         backgroundColor: '#C4C4C4',
         borderRadius: 10
     },
@@ -113,7 +113,7 @@ export function AddedToClosetScreen({ navigation }) {
         width: 233,
         height: 46,
         left: 71,
-        top: 490,
+        top: 522,
         backgroundColor: '#FFFFFF',
         borderRadius: 10
     },

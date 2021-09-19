@@ -81,7 +81,7 @@ export function LoginScreen({ navigation }) {
         width: 258,
         height: 48,
         left: 58,
-        top: 98,
+        top: 118,
     
         fontFamily: 'Roboto-Medium',
         fontStyle: 'normal',
@@ -96,7 +96,7 @@ export function LoginScreen({ navigation }) {
       width: 228,
       height: 34,
       left: 58,
-      top: 146,
+      top: 166,
 
       fontFamily: 'Roboto',
       fontStyle: 'normal',
@@ -112,7 +112,7 @@ export function LoginScreen({ navigation }) {
       width: 148,
       height: 30,
       left: 108,
-      top: 335,
+      top: 355,
       display: 'flex',
       alignItems: 'center',
       
@@ -131,7 +131,7 @@ export function LoginScreen({ navigation }) {
       width: 259,
       height: 51,
       left: 58,
-      top: 500,
+      top: 520,
       backgroundColor: '#785EF0',
       borderRadius: 25.5
     },
@@ -156,7 +156,7 @@ export function LoginScreen({ navigation }) {
       width: 254,
       height: 32,
       left: 61,
-      top: 390,
+      top: 410,
       backgroundColor: '#648FFF',
       borderRadius: 4
     },
@@ -181,14 +181,14 @@ export function LoginScreen({ navigation }) {
       width: 16,
       height: 24,
       left: 72,
-      top: 216
+      top: 236
     },
     passwordIcon: {
       position: 'absolute',
       width: 20,
       height: 24,
       left: 72,
-      top: 284
+      top: 304
     }
   });
 
@@ -201,7 +201,7 @@ export function LoginScreen({ navigation }) {
       top: 266,
       borderWidth: buttonBorderWidth,
       borderRadius: 7,
-      top: 204,
+      top: 224,
       paddingLeft: 40,
       borderColor: usernameBorderColor
     },
@@ -212,7 +212,7 @@ export function LoginScreen({ navigation }) {
       width: 259,
       height: 51,
       left: 57,
-      top: 271,
+      top: 291,
       paddingLeft: 40,
       borderColor: passwordBorderColor
     },
