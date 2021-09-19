@@ -260,9 +260,14 @@ async function sendPhotoAgain(base64) {
                 console.log(response);
                 console.log(response.data);
             }
+
+            return response.data.data
+
         }).catch(error => {
         console.log("Bad");
         console.log(error)
+
+
     })
 }
 
@@ -270,11 +275,17 @@ async function sendPhotoAgain(base64) {
 const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
     //console.log('sdsfds', photo)
 
-    sendPhoto(photo)
-        .then( base64 => {
-            //console.log(base64)
-            sendPhotoAgain(base64)
-        })
+    const sendPhotoOut = sendPhoto(photo)
+    .then( base64 => {
+        //console.log(base64)
+
+        const sendPhotoAgainOut = sendPhotoAgain(base64)
+        console.log(sendPhotoAgainOut)
+        return sendPhotoAgainOut
+    })
+
+
+
 
     // axios.post('https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api', {
     //     image: 'Fred'
@@ -336,7 +347,12 @@ const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Preview')}
+                onPress={() => navigation.navigate('Preview',
+                    {
+                    image: photo.uri,
+                    text: sendPhotoOut
+                    }
+                )}
               style={{
                 width: 130,
                 height: 40,

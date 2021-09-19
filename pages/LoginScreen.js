@@ -198,7 +198,6 @@ export function LoginScreen({ navigation }) {
       width: 259,
       height: 51,
       left: 57,
-      top: 266,
       borderWidth: buttonBorderWidth,
       borderRadius: 7,
       top: 224,
