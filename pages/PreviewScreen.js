@@ -37,14 +37,16 @@ export function PreviewScreen({ route, navigation }) {
             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
 
+
+
         <View style={{  position: 'absolute', bottom: 0}}>
             <SvgXml xml={svgMarkup} width={Dimensions.get('window').width} />
         </View>
 
         <Text style={{
-            width: 258,
+            width: Dimensions.get('window').width/1.5,
             height: 48,
-            textAlign: "center",
+            textAlign: "left",
 
             fontFamily: 'Roboto-Medium',
             fontStyle: 'normal',
@@ -57,7 +59,21 @@ export function PreviewScreen({ route, navigation }) {
             color: '#000000',
         }}>Clothing Item</Text>
 
+            <View style={{textAlign: 'left'}}>
+                <Text style={{
+                    width: Dimensions.get('window').width/1.5,
 
+                    fontFamily: "Roboto-Medium",
+                    fontStyle: 'normal',
+                    fontWeight: '500',
+                    fontSize: 13,
+                    lineHeight: 15,
+                    color: '#858585',
+                    textAlign: 'left',
+                    paddingBottom: 10,
+
+                }}>With generated description</Text>
+            </View>
 
         <Image
             style={{

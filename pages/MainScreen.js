@@ -34,7 +34,8 @@ export function MainScreen({ route, navigation }) {
                 <Pressable 
                     style={styles.closetButton}
                     accessible={true}
-                    accessibilityHint="Click button to browse your closet" 
+                    accessibilityHint="Click button to browse your closet"
+                    onPress={() => navigation.navigate('ClosetScreen')}
                 >
                     <Text style={styles.closetButtonText}>Closet</Text>
                     <HangerIcon style={styles.hangerIcon}/>
