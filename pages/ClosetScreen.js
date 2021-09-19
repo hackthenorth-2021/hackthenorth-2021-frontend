@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, ImageBackground, Dimensions, Text, Image, StyleSheet} from 'react-native';
-import { Pressable } from 'react-native';
+import { Pressable, SafeAreaView, ScrollView } from 'react-native';
 import Logo from '../assets/logo.svg';
 import Svg, {Circle, Rect, SvgXml} from 'react-native-svg';
 
@@ -19,6 +19,17 @@ const styles = StyleSheet.create({
         width: 66,
         height: 58,
     },
+    container2: {
+        flex: 1,
+        marginTop: 5,
+    },
+    scrollView: {
+        backgroundColor: 'pink',
+        marginHorizontal: 20,
+    },
+    text: {
+        fontSize: 42,
+    },
 });
 
 export function ClosetScreen({ route, navigation }) {
@@ -31,7 +42,8 @@ export function ClosetScreen({ route, navigation }) {
             accessible={true}
             accessibleLabel="Tap me!"
             accessibilityHint="Navigates to login or sign up screen"
-            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center',
+                backgroundColor: "#ffffff" }}
         >
 
             <View style={{  position: 'absolute', top: -10}}>
@@ -139,71 +151,192 @@ export function ClosetScreen({ route, navigation }) {
                 }}>Add new items to your closet</Text>
             </Pressable>
 
-            <Pressable
-                accessible={true}
-                accessibilityHint="Login to continue using Seamless"
-                onPress={() => {}}
-                style={{
-                    width: 254,
-                    height: 120,
-                    backgroundColor: 'gray',
-                    borderRadius: 15,
-                    margin: 5
-                }}>
-                <Text style={{
-                    paddingTop: 50,
-                    fontFamily: 'Roboto-Medium',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    lineHeight: 21,
-                    display: 'flex',
-                    textAlign: 'center',
-                    color: '#FFFFFF'
-                }}>Pants</Text>
-                <Text style={{
-                    fontFamily: 'Roboto-Medium',
-                    fontStyle: 'normal',
-                    fontSize: 14,
-                    lineHeight: 21,
-                    display: 'flex',
-                    textAlign: 'center',
-                    color: '#FFFFFF'
-                }}>Blue jeans high waisted</Text>
-            </Pressable>
 
-            <Pressable
-                accessible={true}
-                accessibilityHint="Login to continue using Seamless"
-                onPress={() => {}}
-                style={{
-                    width: 254,
-                    height: 120,
-                    backgroundColor: 'gray',
-                    borderRadius: 15,
-                    margin: 5
+            <View style={{
+                height: 350,
+
+            }}>
+
+
+            <SafeAreaView style={{
+                flex: 1,
+                marginTop: 5,
+
+            }}>
+                <ScrollView style={{
+                    backgroundColor: '#ffffff',
+                    marginHorizontal: 20,
+                    height: 5,
                 }}>
-                <Text style={{
-                    paddingTop: 50,
-                    fontFamily: 'Roboto-Medium',
-                    fontStyle: 'normal',
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    lineHeight: 21,
-                    display: 'flex',
-                    textAlign: 'center',
-                    color: '#FFFFFF'
-                }}>T shirt</Text>
-                <Text style={{
-                    fontFamily: 'Roboto-Medium',
-                    fontStyle: 'normal',
-                    fontSize: 14,
-                    lineHeight: 21,
-                    display: 'flex',
-                    textAlign: 'center',
-                    color: '#FFFFFF'
-                }}>Black and white stripes</Text>
-            </Pressable>
+                    <Pressable
+                        accessible={true}
+                        accessibilityHint="Login to continue using Seamless"
+                        onPress={() => {}}
+                        style={{
+                            width: 254,
+                            height: 120,
+                            backgroundColor: 'gray',
+                            borderRadius: 15,
+                            margin: 5,
+                        }}>
+                        <ImageBackground
+                            source={require('../assets/shorts.jpg')}
+                            style={{
+                                flex: 1,
+                            }}
+                            imageStyle={{ borderRadius: 15}}
+                        >
+                        <Text style={{
+                            paddingTop: 50,
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontWeight: 'bold',
+                            fontSize: 18,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>Shorts</Text>
+                        <Text style={{
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontSize: 14,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>Black shorts athletic basketball</Text>
+                        </ImageBackground>
+                    </Pressable>
+
+                    <Pressable
+                        accessible={true}
+                        accessibilityHint="Login to continue using Seamless"
+                        onPress={() => {}}
+                        style={{
+                            width: 254,
+                            height: 120,
+                            backgroundColor: 'gray',
+                            borderRadius: 15,
+                            margin: 5
+                        }}>
+                        <ImageBackground
+                            source={require('../assets/jeans.jpg')}
+                            style={{
+                                flex: 1,
+                            }}
+                            imageStyle={{ borderRadius: 15}}
+                        >
+                        <Text style={{
+                            paddingTop: 50,
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontWeight: 'bold',
+                            fontSize: 18,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>Pants</Text>
+                        <Text style={{
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontSize: 14,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>Blue jeans high waisted</Text>
+                        </ImageBackground>
+                    </Pressable>
+
+                    <Pressable
+                        accessible={true}
+                        accessibilityHint="Login to continue using Seamless"
+                        onPress={() => {}}
+                        style={{
+                            width: 254,
+                            height: 120,
+                            backgroundColor: 'gray',
+                            borderRadius: 15,
+                            margin: 5
+                        }}>
+                        <ImageBackground
+                            source={require('../assets/red_shirt.jpg')}
+                            style={{
+                                flex: 1,
+                            }}
+                            imageStyle={{ borderRadius: 15}}
+                        >
+                        <Text style={{
+                            paddingTop: 50,
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontWeight: 'bold',
+                            fontSize: 18,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>T shirt</Text>
+                        <Text style={{
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontSize: 14,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>Red cotton round-collar </Text>
+                        </ImageBackground>
+                    </Pressable>
+
+
+                    <Pressable
+                        accessible={true}
+                        accessibilityHint="Login to continue using Seamless"
+                        onPress={() => {}}
+                        style={{
+                            width: 254,
+                            height: 120,
+                            backgroundColor: 'gray',
+                            borderRadius: 15,
+                            margin: 5
+                        }}>
+                        <ImageBackground
+                            source={require('../assets/white_shirt.jpg')}
+                            style={{
+                                flex: 1,
+                            }}
+                            imageStyle={{ borderRadius: 15}}
+                        >
+                        <Text style={{
+                            paddingTop: 50,
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontWeight: 'bold',
+                            fontSize: 18,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>T shirt</Text>
+                        <Text style={{
+                            fontFamily: 'Roboto-Medium',
+                            fontStyle: 'normal',
+                            fontSize: 14,
+                            lineHeight: 21,
+                            display: 'flex',
+                            textAlign: 'center',
+                            color: '#FFFFFF'
+                        }}>White cotton maxi</Text>
+                        </ImageBackground>
+                    </Pressable>
+                </ScrollView>
+            </SafeAreaView>
+            </View>
         </View>
     );
+
+
 }
