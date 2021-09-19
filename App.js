@@ -26,6 +26,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './pages/HomeScreen';
+import { PreviewScreen } from './pages/PreviewScreen';
 import { DetailsScreen } from './pages/DetailsScreen';
 import { TitleScreen } from './pages/TitleScreen';
 import { LoginScreen } from './pages/LoginScreen';
@@ -65,6 +66,7 @@ function App() {
         <Stack.Screen name="Clothing Analysis" component={ClothingScreen} />
         <Stack.Screen name="Closet" component={AddedToClosetScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Preview" component={PreviewScreen} />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}

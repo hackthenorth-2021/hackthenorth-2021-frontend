@@ -11,7 +11,7 @@ import * as ImageManipulator from 'expo-image-manipulator';
 import * as Speech from 'expo-speech';
 
 let camera;
-export default function CameraScreen({ setHideComponents }) {
+export default function CameraScreen({ setHideComponents, navigation }) {
 
   const [startCamera, setStartCamera] = React.useState(false)
   const [previewVisible, setPreviewVisible] = React.useState(false)
@@ -68,7 +68,7 @@ export default function CameraScreen({ setHideComponents }) {
           }}
         >
           {previewVisible && capturedImage ? (
-            <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} />
+            <CameraPreview photo={capturedImage} savePhoto={__savePhoto} retakePicture={__retakePicture} navigation={navigation}/>
           ) : (
             <Camera
               type={cameraType}
@@ -267,14 +267,13 @@ async function sendPhotoAgain(base64) {
 }
 
 
-const CameraPreview = ({photo, retakePicture, savePhoto}) => {
+const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
     //console.log('sdsfds', photo)
 
     sendPhoto(photo)
         .then( base64 => {
             //console.log(base64)
             sendPhotoAgain(base64)
-
         })
 
     // axios.post('https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api', {
@@ -337,7 +336,7 @@ const CameraPreview = ({photo, retakePicture, savePhoto}) => {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={savePhoto}
+                onPress={() => navigation.navigate('Preview')}
               style={{
                 width: 130,
                 height: 40,

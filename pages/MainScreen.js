@@ -29,7 +29,7 @@ export function MainScreen({ route, navigation }) {
                     <Text style={styles.welcomeText}>{username.username}</Text> 
                 </View>
             }
-            <CameraScreen setHideComponents={setHideComponents}/>
+            <CameraScreen setHideComponents={setHideComponents} navigation={navigation}/>
             {!hideComponents && 
                 <Pressable 
                     style={styles.closetButton}
