@@ -3,6 +3,8 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Alert, ImageBackground, Image, Pressable} from 'react-native';
 import { Camera } from 'expo-camera';
 import CameraIcon from '../assets/camera-icon.svg';
+import CameraButton from '../assets/camera-button.svg';
+import CameraDesign from '../assets/camera-design.svg';
 
 let camera;
 export default function CameraScreen({ setHideComponents }) {
@@ -142,16 +144,10 @@ export default function CameraScreen({ setHideComponents }) {
                       alignItems: 'center'
                     }}
                   >
-                    <TouchableOpacity
-                      onPress={__takePicture}
-                      style={{
-                        width: 70,
-                        height: 70,
-                        bottom: 0,
-                        borderRadius: 50,
-                        backgroundColor: '#fff'
-                      }}
-                    />
+                    <CameraDesign style={styles.cameraDesign}/>
+                    <TouchableOpacity onPress={__takePicture}>
+                        <CameraButton style={styles.cameraButton}/>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>
@@ -212,6 +208,15 @@ const styles = StyleSheet.create({
         top: 104,
         opacity: 0.98
     },
+    cameraButton: {
+        width: 90,
+        height: 90,
+        top: -50,
+        borderRadius: 50,
+    },
+    cameraDesign: {
+        top: 140
+    }
 })
 
 const CameraPreview = ({photo, retakePicture, savePhoto}) => {

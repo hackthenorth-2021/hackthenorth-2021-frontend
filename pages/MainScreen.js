@@ -53,7 +53,7 @@ export function MainScreen({ route, navigation }) {
             }
 
             {!hideComponents && 
-                <Pressable style={[styles.helpButton, styles.shadowProp]}>
+                <Pressable onPress={() => navigation.navigate('Clothing Analysis')} style={[styles.helpButton, styles.shadowProp]}>
                     <Text style={styles.helpButtonText}>Help</Text>
                     <HelpIcon style={styles.helpIcon}/>
                 </Pressable>

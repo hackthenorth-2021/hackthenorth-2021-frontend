@@ -34,6 +34,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useEffect } from 'react';
 import { MainScreen } from './pages/MainScreen';
 import CameraScreen from './pages/CameraScreen';
+import { ClothingScreen } from './pages/ClothingScreen';
+import { AddedToClosetScreen } from './pages/AddedToClosetScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -59,6 +61,8 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Seamless" component={MainScreen} />
         <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="Clothing Analysis" component={ClothingScreen} />
+        <Stack.Screen name="Closet" component={AddedToClosetScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen
           name="Details"
