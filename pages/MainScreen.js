@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, ImageBackground, Text, StyleSheet, Pressable, Switch } from 'react-native';
-import CameraIcon from '../assets/camera-icon.svg';
 import HangerIcon from '../assets/hanger-icon.svg';
 import HelpIcon from '../assets/help-icon.svg';
 import { useState } from 'react';
@@ -17,6 +16,8 @@ export function MainScreen({ route, navigation }) {
         value == "On" ? setValue("Off") : setValue("On");
     };
 
+    const [hideComponents, setHideComponents] = useState(false);
+
     const [value, setValue] = React.useState(isEnabled == false ? "Off" : "On");
 
     return (
@@ -26,36 +27,37 @@ export function MainScreen({ route, navigation }) {
                 <Text style={styles.welcomeText}>Welcome, </Text> 
                 <Text style={styles.welcomeText}>{username.username}</Text> 
             </View>
-            {/* <Pressable style={styles.captureButton} onPress={() => navigation.navigate('Camera')}>
-                <Text style={styles.captureButtonText}>Capture</Text>
-                <CameraIcon style={styles.cameraIcon}/>
-            </Pressable> */}
-            <CameraScreen></CameraScreen>
-            
-            <Pressable style={styles.closetButton}>
-                <Text style={styles.closetButtonText}>Closet</Text>
-                <HangerIcon style={styles.hangerIcon}/>
-            </Pressable>
+            <CameraScreen setHideComponents={setHideComponents}/>
+            {!hideComponents && 
+                <Pressable style={styles.closetButton}>
+                    <Text style={styles.closetButtonText}>Closet</Text>
+                    <HangerIcon style={styles.hangerIcon}/>
+                </Pressable>
+            }
 
-            <Pressable style={styles.recommendButton}>
-                <View style={styles.recommendView}>
-                    <Text style={styles.recommendButtonText}>Recommend</Text>
-                    <Text style={styles.recommendButtonText}>styles</Text>
-                </View>
-                <Text style={styles.toggleText}>{value}</Text>
-                <Switch
-                    trackColor={{ false: '#767577', true: '#FFFFFF' }}
-                    thumbColor={isEnabled ? '#FFB000' : '#f4f3f4'}
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
-                    style={styles.reccSwitch}
-                />
-            </Pressable>
-            
-            <Pressable style={[styles.helpButton, styles.shadowProp]}>
-                <Text style={styles.helpButtonText}>Help</Text>
-                <HelpIcon style={styles.helpIcon}/>
-            </Pressable>
+            {!hideComponents && 
+                <Pressable style={styles.recommendButton}>
+                    <View style={styles.recommendView}>
+                        <Text style={styles.recommendButtonText}>Recommend</Text>
+                        <Text style={styles.recommendButtonText}>styles</Text>
+                    </View>
+                    <Text style={styles.toggleText}>{value}</Text>
+                    <Switch
+                        trackColor={{ false: '#767577', true: '#FFFFFF' }}
+                        thumbColor={isEnabled ? '#FFB000' : '#f4f3f4'}
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                        style={styles.reccSwitch}
+                    />
+                </Pressable>
+            }
+
+            {!hideComponents && 
+                <Pressable style={[styles.helpButton, styles.shadowProp]}>
+                    <Text style={styles.helpButtonText}>Help</Text>
+                    <HelpIcon style={styles.helpIcon}/>
+                </Pressable>
+            }
         </ImageBackground>
       </View>
     );
@@ -75,32 +77,6 @@ export function MainScreen({ route, navigation }) {
         fontWeight: 'bold',
         fontSize: 36,
         lineHeight: 42
-    },
-    captureButton: {
-        position: 'absolute',
-        width: 303,
-        height: 239,
-        left: 35,
-        top: 114,
-        backgroundColor: '#DC267F',
-        borderRadius: 14
-    },
-    captureButtonText: {
-        fontFamily: 'Roboto-Medium',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: 36,
-        lineHeight: 42,
-        display: 'flex',
-        alignItems: 'center',
-        textAlign: 'center',
-        color: '#FFFFFF',
-
-        position: 'absolute',
-        width: 404,
-        height: 76,
-        left: -50,
-        top: 28
     },
     closetButton: {
         position: 'absolute',
@@ -186,14 +162,6 @@ export function MainScreen({ route, navigation }) {
         shadowOffset: {width: -3, height: 6},
         shadowOpacity: 0.2,
         shadowRadius: 3,
-    },
-    cameraIcon: {
-        position: 'absolute',
-        width: 108,
-        height: 76,
-        left: 98,
-        top: 104,
-        opacity: 0.98
     },
     hangerIcon: {
         position: 'absolute',

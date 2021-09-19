@@ -5,7 +5,7 @@ import { Camera } from 'expo-camera';
 import CameraIcon from '../assets/camera-icon.svg';
 
 let camera;
-export default function CameraScreen() {
+export default function CameraScreen({ setHideComponents }) {
 
   const [startCamera, setStartCamera] = React.useState(false)
   const [previewVisible, setPreviewVisible] = React.useState(false)
@@ -14,6 +14,7 @@ export default function CameraScreen() {
   const [flashMode, setFlashMode] = React.useState('off')
 
   const __startCamera = async () => {
+    setHideComponents(true)
     const {status} = await Camera.requestPermissionsAsync()
     console.log(status)
     if (status === 'granted') {
@@ -158,37 +159,7 @@ export default function CameraScreen() {
           )}
         </View>
       ) : (
-        <View
-        //   style={{
-        //     flex: 1,
-        //     backgroundColor: '#fff',
-        //     justifyContent: 'center',
-        //     alignItems: 'center'
-        //   }}
-        >
-          {/* <TouchableOpacity
-            onPress={__startCamera}
-            style={{
-              width: 130,
-              borderRadius: 4,
-              backgroundColor: '#14274e',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: 40
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}
-            >
-              Take picture
-            </Text>
-          </TouchableOpacity> */}
-
+        <View>
           <Pressable style={styles.captureButton} onPress={__startCamera}>
                 <Text style={styles.captureButtonText}>Capture</Text>
                 <CameraIcon style={styles.cameraIcon}/>
