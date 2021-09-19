@@ -96,6 +96,9 @@ export default function CameraScreen({ setHideComponents }) {
                   }}
                 >
                   <TouchableOpacity
+                    accessible={true}
+                    accessibilityLabel="Flash"
+                    accessibilityHint={"Click button to " + (flashMode === 'off' ? "enable": "disable") + " flash."}
                     onPress={__handleFlashMode}
                     style={{
                       backgroundColor: flashMode === 'off' ? '#000' : '#fff',
@@ -113,6 +116,8 @@ export default function CameraScreen({ setHideComponents }) {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
+                    accessible={true}
+                    accessibilityHint={"Click button to switch to " + (cameraType === 'back' ? "front" : "back") + " camera."}
                     onPress={__switchCamera}
                     style={{
                       marginTop: 20,
