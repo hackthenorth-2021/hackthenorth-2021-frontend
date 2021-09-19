@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 
 export function ClosetScreen({ route, navigation }) {
 
-    //const { image, text } = route.params;
+    const { username } = route.params;
 
 
     return (
@@ -80,7 +80,32 @@ export function ClosetScreen({ route, navigation }) {
             </View>
 
 
-
+            <Pressable
+                accessible={true}
+                accessibilityHint="Back to main screen"
+                onPress={() => navigation.navigate('Seamless', {
+                    username: username
+                })}
+                style={{
+                    position: "absolute",
+                    width: 50,
+                    height: 50,
+                    borderRadius: 15,
+                    margin: 5,
+                    left:0,
+                    top:30
+                }}>
+                <Text style={{
+                    fontFamily: 'Roboto-Medium',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    fontSize: 25,
+                    lineHeight: 21,
+                    display: 'flex',
+                    textAlign: 'center',
+                    color: '#FFFFFF'
+                }}>←</Text>
+            </Pressable>
 
 
             {/*<Image*/}
@@ -120,7 +145,7 @@ export function ClosetScreen({ route, navigation }) {
                 accessible={true}
                 accessibilityHint="Login to continue using Seamless"
                 onPress={() => navigation.navigate('Seamless', {
-                    username: usertext
+                    username: username
                 })}
                 style={{
                     width: 254,
