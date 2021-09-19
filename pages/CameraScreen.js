@@ -5,6 +5,10 @@ import { Camera } from 'expo-camera';
 import CameraIcon from '../assets/camera-icon.svg';
 import CameraButton from '../assets/camera-button.svg';
 import CameraDesign from '../assets/camera-design.svg';
+import axios from 'axios';
+import * as FileSystem from "expo-file-system/build/FileSystem";
+import * as ImageManipulator from 'expo-image-manipulator';
+import * as Speech from 'expo-speech';
 
 let camera;
 export default function CameraScreen({ setHideComponents }) {
@@ -95,7 +99,7 @@ export default function CameraScreen({ setHideComponents }) {
                     onPress={__handleFlashMode}
                     style={{
                       backgroundColor: flashMode === 'off' ? '#000' : '#fff',
-                      borderRadius: '50%',
+                      borderRadius: 10,
                       height: 25,
                       width: 25
                     }}
@@ -112,7 +116,7 @@ export default function CameraScreen({ setHideComponents }) {
                     onPress={__switchCamera}
                     style={{
                       marginTop: 20,
-                      borderRadius: '50%',
+                      borderRadius: 10,
                       height: 25,
                       width: 25
                     }}
@@ -223,8 +227,60 @@ const styles = StyleSheet.create({
     }
 })
 
+async function sendPhoto(photo) {
+
+    const resizedPhoto = await ImageManipulator.manipulateAsync(
+        photo.uri,
+        [{ resize: { width: 300 } }], // resize to width of 300 and preserve aspect ratio
+        { compress: 0.7, format: 'jpeg', base64 : true },
+    );
+    //const base64 = await FileSystem.readAsStringAsync(resizedPhoto, { encoding: 'base64' });
+    //console.log('test', base64)
+    return resizedPhoto.base64
+}
+
+async function sendPhotoAgain(base64) {
+
+    await axios.post(
+        "https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api", { "image" : base64})
+        .then(function (response) {
+            //console.log("Here", {response});
+            console.log("Text", response.data.data);
+            Speech.speak(response.data.data);
+            if (response.data.status)
+            {
+                console.log("Good");
+                console.log(response);
+                console.log(response.data);
+            }
+        }).catch(error => {
+        console.log("Bad");
+        console.log(error)
+    })
+}
+
+
 const CameraPreview = ({photo, retakePicture, savePhoto}) => {
-  console.log('sdsfds', photo)
+    //console.log('sdsfds', photo)
+
+    sendPhoto(photo)
+        .then( base64 => {
+            //console.log(base64)
+            sendPhotoAgain(base64)
+
+        })
+
+    // axios.post('https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api', {
+    //     image: 'Fred'
+    // })
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //         console.log(error);
+    //     });
+
   return (
     <View
       style={{
