@@ -232,15 +232,14 @@ const styles = StyleSheet.create({
     }
 })
 
-async function sendPhoto(photo) {
+// resize the given photo and return the base 64 of the image
+async function resizePhoto(photo) {
 
     const resizedPhoto = await ImageManipulator.manipulateAsync(
         photo.uri,
         [{ resize: { width: 300 } }], // resize to width of 300 and preserve aspect ratio
         { compress: 0.7, format: 'jpeg', base64 : true },
     );
-    //const base64 = await FileSystem.readAsStringAsync(resizedPhoto, { encoding: 'base64' });
-    //console.log('test', base64)
     return resizedPhoto.base64
 }
 
@@ -248,8 +247,7 @@ async function sendPhotoAgain(base64) {
 
     await axios.post(
         "https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api", { "image" : base64})
-        .then(function (response) {
-            //console.log("Here", {response});
+        .then((response) => {
             console.log("Text", response.data.data);
 
             Speech.speak(response.data.data);
@@ -271,32 +269,18 @@ async function sendPhotoAgain(base64) {
     })
 }
 
+const sendPhotoAll = async (photo) => {
+  const base64Data = await resizePhoto(photo);
+  const textData = await sendPhotoAgain(base64Data);
+
+  return textData
+}
+
 
 const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
-    //console.log('sdsfds', photo)
 
-    const sendPhotoOut = sendPhoto(photo)
-    .then( base64 => {
-        //console.log(base64)
-
-        const sendPhotoAgainOut = sendPhotoAgain(base64)
-        console.log(sendPhotoAgainOut)
-        return sendPhotoAgainOut
-    })
-
-
-
-
-    // axios.post('https://us-central1-seamless-326405.cloudfunctions.net/seamless_request_api', {
-    //     image: 'Fred'
-    // })
-    //     .then(function (response) {
-    //         console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //         console.log(error);
-    //     });
+    const textData = sendPhotoAll(photo);
+    console.log(textData, "camera screen textdata")
 
   return (
     <View
@@ -350,7 +334,7 @@ const CameraPreview = ({photo, retakePicture, savePhoto, navigation}) => {
                 onPress={() => navigation.navigate('Preview',
                     {
                     image: photo.uri,
-                    text: sendPhotoOut
+                    text: textData
                     }
                 )}
               style={{

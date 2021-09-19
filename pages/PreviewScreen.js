@@ -26,7 +26,7 @@ export function PreviewScreen({ route, navigation }) {
     const { image, text } = route.params;
 
     console.log(image);
-    console.log(text);
+    console.log(text, "preview screen text");
 
 
     return (
