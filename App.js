@@ -53,8 +53,9 @@ function App() {
       <Stack.Navigator 
         initialRouteName="Getting Started"
         screenOptions={{
-          headerStyle: { elevation: 0 },
-          cardStyle: { backgroundColor: '#fff'}
+            headerStyle: { elevation: 0 },
+            cardStyle: { backgroundColor: '#fff'},
+            headerShown: false
         }}
       >
         <Stack.Screen name="Getting Started" component={TitleScreen} />

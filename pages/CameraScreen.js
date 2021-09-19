@@ -246,7 +246,9 @@ async function sendPhotoAgain(base64) {
         .then(function (response) {
             //console.log("Here", {response});
             console.log("Text", response.data.data);
+
             Speech.speak(response.data.data);
+
             if (response.data.status)
             {
                 console.log("Good");
